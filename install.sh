@@ -27,7 +27,7 @@ packages=(
 )
 
 # Repositories.
-dotfiles_repo="https://github.com/user/repo.git"
+dotfiles_repo="https://github.com/SyntacticallySilly/Muxu.git"
 
 # --- Installation ---
 
