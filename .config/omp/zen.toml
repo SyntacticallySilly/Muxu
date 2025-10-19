@@ -1,0 +1,126 @@
+# Sorry for almost no amount of comments here. I was in rush.
+# The prompt may be a little buggy. you can use other themes, for them please read the Oh-my-posh docs.
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '  … '
+  foreground = 'default'
+  background = 'black'
+
+[transient_prompt]
+  template = '{{ if gt .Code 0 }}{{ else }}{{ end }}  {{ .Folder }}  '
+  foreground = 'default'
+  background = 'transparent'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  # --- vi-mode indicator (added) ---
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    type = 'text'
+    style = 'diamond'
+    foreground = 'default'
+    background = 'black'
+    template = ' {{ if eq .Env.POSH_VI_MODE "NORMAL" }}  NORM {{ else }} 󰏪 INS {{ end }} '
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = '  {{ .FormattedMs }} '
+    foreground = 'default'
+    background = 'black'
+    type = 'executiontime'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      min = 500
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Path }} '
+    foreground = 'default'
+    background = 'black'
+    type = 'path'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      folder_icon = ''
+      folder_separator_icon = ' / '
+      hide_root_location = false
+      home_icon = ''
+      max_depth = 3
+      style = 'folder'
+
+      [[blocks.segments.properties.mapped_locations]]
+        icon = ''
+        path = '~'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = '  {{ .HEAD }}{{ if .Working.Changed }} {{ end }}{{ if .Staging.Changed }} {{ end }}{{ if .StashCount }} {{ .StashCount }}{{ end }}{{ if gt .Behind 0 }} ⇣{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} ⇡{{ .Ahead }}{{ end }} '
+    foreground = 'default'
+    background = 'black'
+    type = 'git'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      branch_max_length = 28
+      cache_duration = 'none'
+      display_status_detail = true
+      fetch_status = true
+      fetch_upstream_icon = true
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = '  {{ .Venv }} '
+    foreground = 'default'
+    background = 'black'
+    type = 'python'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    foreground = 'default'
+    background = 'black'
+    type = 'status'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      always_enabled = false
+      cache_duration = 'none'
+      template = '{{ if gt .Code 0 }} {{ .Code }}{{ end }}'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' » '
+    foreground = 'default'
+    background = 'black'
+    type = 'text'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
