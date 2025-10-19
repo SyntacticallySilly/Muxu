@@ -3,7 +3,7 @@
 # This script installs specified packages using pkg and clones a dotfiles repository.
 
 # --- Prechecks ---
-termux-setup-storage && cd $HOME
+termux-setup-storage && cd $HOME && bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 # --- Configuration ---
 
@@ -13,9 +13,6 @@ packages=(
   "neovim" # Default text editor/IDE.
   "zsh" # Preferred POSIX shell.
   "nnn" # A simple CLI file manager.
-  "curl" # Curl stuff.
-  "wget" # Get stuff.
-  "tealdeer" # TLDR but deer style. community maintained.
   "man" # Holy bible of ricers. aka 
   "oh-my-posh" # Prompt for shell.
   "atuin" # History navigator but can be more if configured properly.
